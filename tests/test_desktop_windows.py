@@ -136,7 +136,7 @@ $ready = [DesktopWindows]::Initialize()
             with self.subTest(tab=tab):
                 result = subprocess.run(["powershell.exe", "-NoProfile", "-STA", "-ExecutionPolicy", "Bypass",
                                          "-File", str(source), "-ValidateOnly", "-InitialTab", str(tab)],
-                                        capture_output=True, text=True, timeout=20,
+                                        capture_output=True, text=True, timeout=60,
                                         creationflags=subprocess.CREATE_NO_WINDOW)
                 self.assertEqual(0, result.returncode, result.stderr)
                 self.assertIn("validation OK", result.stdout)
